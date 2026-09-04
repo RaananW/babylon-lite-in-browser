@@ -25,6 +25,11 @@ for (const example of ["basic", "animation"]) {
 }
 
 test("model-loading loads a self-hosted glTF with native browser modules", async ({ page }) => {
+  test.skip(
+    Boolean(process.env.CI),
+    "Babylon Lite loadGltf stalls on GitHub's software WebGPU; exercise it on a hardware GPU.",
+  );
+
   await page.goto("/examples/model-loading/");
 
   if (!(await page.evaluate(() => Boolean(navigator.gpu)))) {
@@ -35,6 +40,17 @@ test("model-loading loads a self-hosted glTF with native browser modules", async
     timeout: 30_000,
   });
   await expect(page.locator("#status")).not.toContainText("Error");
+});
+
+test("the self-hosted glTF asset is deployable", async ({ request }) => {
+  const response = await request.get("/assets/pyramid.gltf");
+  const model = await response.json();
+
+  expect(response.ok()).toBe(true);
+  expect(response.headers()["content-type"]).toContain("model/gltf+json");
+  expect(model.asset.version).toBe("2.0");
+  expect(model.meshes).toHaveLength(1);
+  expect(model.buffers[0].uri).toMatch(/^data:application\/octet-stream;base64,/);
 });
 
 test("the vendored module is served as JavaScript", async ({ request }) => {
