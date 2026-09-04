@@ -1,0 +1,37 @@
+{
+  "name": "babylon-lite-in-browser",
+  "version": "1.0.0",
+  "description": "Native browser ESM examples for Babylon Lite, without a bundler.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "packageManager": "pnpm@11.23.0",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "pnpm build && serve dist --listen 5173",
+    "preview": "serve dist --listen 4173",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "playwright test",
+    "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm build && pnpm test"
+  },
+  "dependencies": {
+    "@babylonjs/lite": "^1.27.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.1",
+    "@types/webxr": "^0.5.24",
+    "eslint": "^10.10.0",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "serve": "^14.2.5",
+    "typescript": "^7.0.2"
+  }
+}

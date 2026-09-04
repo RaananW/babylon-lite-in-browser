@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Run Babylon Lite directly in modern browsers with native ES modules and no bundler."
+    />
+    <title>Babylon Lite in the browser</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./site.js"></script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav>
+        <a class="brand" href="./">Babylon Lite / native ESM</a>
+        <a href="https://github.com/RaananW/babylon-lite-in-browser">GitHub</a>
+      </nav>
+      <div class="hero-content">
+        <p class="eyebrow">No bundler. No framework. Just browser modules.</p>
+        <h1>Babylon Lite, directly in the browser</h1>
+        <p class="lede">
+          Import the official browser distribution with an import map and build WebGPU scenes using plain HTML
+          and JavaScript.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="./examples/basic/">Run the first scene</a>
+          <a class="button" href="https://github.com/RaananW/babylon-lite-in-browser#quick-start"
+            >Read the guide</a
+          >
+        </div>
+        <p id="webgpu-status" class="support-status" role="status">Checking WebGPU support...</p>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="examples-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Examples</p>
+            <h2 id="examples-heading">Start with working source</h2>
+          </div>
+          <span id="package-version" class="version">Loading package version...</span>
+        </div>
+
+        <div class="example-grid">
+          <article class="example-card">
+            <div class="card-number">01</div>
+            <h3>Basic scene</h3>
+            <p>A camera, light, PBR sphere, and ground using the explicit Lite scene lifecycle.</p>
+            <a href="./examples/basic/">Open example <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="example-card">
+            <div class="card-number">02</div>
+            <h3>Load a glTF model</h3>
+            <p>Load the BoomBox GLB from Babylon's public asset CDN and frame it automatically.</p>
+            <a href="./examples/model-loading/">Open example <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="example-card">
+            <div class="card-number">03</div>
+            <h3>Animate a scene</h3>
+            <p>Update plain mesh data from an <code>onBeforeRender</code> callback.</p>
+            <a href="./examples/animation/">Open example <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section class="how-it-works" aria-labelledby="how-heading">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-heading">Native ESM from npm to browser</h2>
+        </div>
+        <ol>
+          <li><strong>Install</strong> the pinned <code>@babylonjs/lite</code> npm dependency.</li>
+          <li><strong>Build</strong> by copying its official browser bundle into the static site.</li>
+          <li><strong>Map</strong> the package name to that file with a browser import map.</li>
+          <li><strong>Import</strong> named Lite APIs from ordinary module scripts.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <span>MIT licensed example project</span>
+      <a href="https://doc.babylonjs.com/lite/">Babylon Lite documentation</a>
+    </footer>
+  </body>
+</html>
