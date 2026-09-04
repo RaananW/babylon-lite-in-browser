@@ -17,6 +17,7 @@ await runExample(async (canvas) => {
 
   const model = await loadGltf(engine, "../../assets/pyramid.gltf");
   addToScene(scene, model);
+  canvas.dataset.modelLoaded = "true";
 
   const camera = createDefaultCamera(scene);
   camera.alpha = 1.78;
