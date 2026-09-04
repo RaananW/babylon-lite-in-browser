@@ -15,7 +15,7 @@ await runExample(async (canvas) => {
   const engine = await createEngine(canvas);
   const scene = createSceneContext(engine);
 
-  const model = await loadGltf(engine, "https://playground.babylonjs.com/scenes/BoomBox.glb");
+  const model = await loadGltf(engine, "../../assets/pyramid.gltf");
   addToScene(scene, model);
 
   const camera = createDefaultCamera(scene);

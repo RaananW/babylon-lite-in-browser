@@ -43,7 +43,7 @@ Everything needed for deployment is in `dist/`.
 | Example                                         | What it demonstrates                                                |
 | ----------------------------------------------- | ------------------------------------------------------------------- |
 | [Basic scene](public/examples/basic/)           | Engine, scene, camera, light, PBR material, geometry, and lifecycle |
-| [Model loading](public/examples/model-loading/) | glTF loading, remote assets, and automatic camera framing           |
+| [Model loading](public/examples/model-loading/) | glTF loading, self-hosted assets, and automatic camera framing      |
 | [Animation](public/examples/animation/)         | Procedural updates through `onBeforeRender` and shared materials    |
 
 Every example is plain HTML and JavaScript. View its `index.html` and `main.js` together; there is
@@ -138,6 +138,7 @@ application architecture. Your scene code can keep the same named imports.
 ```text
 .
 ├── public/
+│   ├── assets/            # Self-hosted assets used by the examples
 │   ├── examples/          # Browser-native example pages and modules
 │   ├── shared/            # Shared example shell and error/status handling
 │   └── index.html         # Example gallery
@@ -215,8 +216,8 @@ appear before the module script that uses them.
 
 ### A model does not load
 
-The model-loading example uses a public remote asset. Check the network panel for connectivity,
-CORS, or Content Security Policy failures. Self-host models when availability must be guaranteed.
+Check the network panel for missing files or Content Security Policy failures. The example uses a
+self-hosted glTF with an embedded buffer, so it requires no cross-origin model requests.
 
 ### Error messages contain only a number
 
