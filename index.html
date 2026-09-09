@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Build interactive 3D scenes in the browser with Babylon Lite and Babylon.js using WebGPU, native ES modules, import maps, and no bundler."
+    />
+    <link rel="canonical" href="https://raananw.github.io/babylon-lite-in-browser/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Babylon Lite in the browser" />
+    <meta property="og:title" content="Babylon Lite 3D scenes in the browser | No bundler" />
+    <meta
+      property="og:description"
+      content="Explore interactive Babylon.js and Babylon Lite WebGPU examples built with plain HTML, JavaScript, native ES modules, and no bundler."
+    />
+    <meta property="og:url" content="https://raananw.github.io/babylon-lite-in-browser/" />
+    <meta
+      property="og:image"
+      content="https://raananw.github.io/babylon-lite-in-browser/assets/previews/basic.png"
+    />
+    <meta property="og:image:width" content="960" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="A rendered Babylon Lite 3D scene" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Babylon Lite 3D scenes in the browser | No bundler</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./site.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "Babylon Lite in the browser",
+        "description": "Interactive 3D scene examples using Babylon Lite, Babylon.js, WebGPU, native ES modules, and no application bundler.",
+        "url": "https://raananw.github.io/babylon-lite-in-browser/",
+        "codeRepository": "https://github.com/RaananW/babylon-lite-in-browser",
+        "license": "https://opensource.org/license/mit",
+        "programmingLanguage": ["HTML", "JavaScript"],
+        "runtimePlatform": "Web browser with WebGPU"
+      }
+    </script>
+  </head>
+  <body>
+    <header class="hero">
+      <nav>
+        <a class="brand" href="./">Babylon Lite / native ESM</a>
+        <a href="https://github.com/RaananW/babylon-lite-in-browser">GitHub</a>
+      </nav>
+      <div class="hero-content">
+        <p class="eyebrow">No bundler. No framework. Just browser modules.</p>
+        <h1>Babylon Lite, directly in the browser</h1>
+        <p class="lede">
+          Build interactive 3D scenes with Babylon Lite, the lightweight WebGPU renderer in the Babylon.js
+          ecosystem. Import the official browser distribution with an import map and use plain HTML and
+          JavaScript—no bundler required.
+        </p>
+        <div class="actions">
+          <a class="button primary" href="./examples/basic/">Run the first scene</a>
+          <a class="button" href="https://github.com/RaananW/babylon-lite-in-browser#quick-start"
+            >Read the guide</a
+          >
+        </div>
+        <p id="webgpu-status" class="support-status" role="status">Checking WebGPU support...</p>
+      </div>
+    </header>
+
+    <main>
+      <section aria-labelledby="examples-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Examples</p>
+            <h2 id="examples-heading">Start with working source</h2>
+          </div>
+          <span id="package-version" class="version">Loading package version...</span>
+        </div>
+
+        <div class="example-grid">
+          <article class="example-card" style="--card-image: url(&quot;./assets/previews/basic.png&quot;)">
+            <div class="card-number">01</div>
+            <div class="card-copy">
+              <h3>Basic scene</h3>
+              <p>A camera, light, PBR sphere, and ground using the explicit Lite scene lifecycle.</p>
+              <a href="./examples/basic/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article
+            class="example-card"
+            style="--card-image: url(&quot;./assets/previews/model-loading.png&quot;)"
+          >
+            <div class="card-number">02</div>
+            <div class="card-copy">
+              <h3>Load a glTF model</h3>
+              <p>Load a self-hosted glTF model and frame it automatically.</p>
+              <a href="./examples/model-loading/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article
+            class="example-card"
+            style="--card-image: url(&quot;./assets/previews/animation.png&quot;)"
+          >
+            <div class="card-number">03</div>
+            <div class="card-copy">
+              <h3>Animate a scene</h3>
+              <p>Update plain mesh data from an <code>onBeforeRender</code> callback.</p>
+              <a href="./examples/animation/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article
+            class="example-card"
+            style="--card-image: url(&quot;./assets/previews/materials.png&quot;)"
+          >
+            <div class="card-number">04</div>
+            <div class="card-copy">
+              <h3>Advanced materials</h3>
+              <p>Compare clear coat, sheen, and iridescence on animated PBR torus knots.</p>
+              <a href="./examples/materials/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article
+            class="example-card"
+            style="--card-image: url(&quot;./assets/previews/procedural-geometry.png&quot;)"
+          >
+            <div class="card-number">05</div>
+            <div class="card-copy">
+              <h3>Procedural geometry</h3>
+              <p>Generate a double helix from tubes and animate its line data on the GPU.</p>
+              <a href="./examples/procedural-geometry/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="example-card" style="--card-image: url(&quot;./assets/previews/csg.png&quot;)">
+            <div class="card-number">06</div>
+            <div class="card-copy">
+              <h3>Boolean mesh sculpting</h3>
+              <p>Subtract and union primitive solids into a completely new renderable mesh.</p>
+              <a href="./examples/csg/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="example-card" style="--card-image: url(&quot;./assets/previews/cdn.png&quot;)">
+            <div class="card-number">07</div>
+            <div class="card-copy">
+              <h3>Load from an npm CDN</h3>
+              <p>Run Babylon Lite from jsDelivr with only an import map and native browser modules.</p>
+              <a href="./examples/cdn/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article
+            class="example-card"
+            style="--card-image: url(&quot;./assets/previews/cdn-unpkg.png&quot;)"
+          >
+            <div class="card-number">08</div>
+            <div class="card-copy">
+              <h3>UNPKG crystal garden</h3>
+              <p>A vivid field of reflective crystals loaded directly from UNPKG.</p>
+              <a href="./examples/cdn-unpkg/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article
+            class="example-card"
+            style="--card-image: url(&quot;./assets/previews/cdn-jsdelivr.png&quot;)"
+          >
+            <div class="card-number">09</div>
+            <div class="card-copy">
+              <h3>jsDelivr aurora orbit</h3>
+              <p>Emissive rings and colorful orbiters powered by a pinned jsDelivr module.</p>
+              <a href="./examples/cdn-jsdelivr/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="how-it-works" aria-labelledby="how-heading">
+        <div>
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-heading">Native ESM from npm to browser</h2>
+        </div>
+        <ol>
+          <li>
+            <strong>Choose</strong> a pinned npm CDN URL or install <code>@babylonjs/lite</code> locally.
+          </li>
+          <li><strong>Serve</strong> the official browser bundle from the CDN or your own static site.</li>
+          <li><strong>Map</strong> the package name to that file with a browser import map.</li>
+          <li><strong>Import</strong> named Lite APIs from ordinary module scripts.</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <span>MIT licensed example project</span>
+      <a href="https://doc.babylonjs.com/lite/">Babylon Lite documentation</a>
+    </footer>
+  </body>
+</html>
