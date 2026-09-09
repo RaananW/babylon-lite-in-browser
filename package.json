@@ -11,6 +11,7 @@
   "packageManager": "pnpm@11.23.0",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "capture:previews": "pnpm build && node scripts/capture-previews.mjs",
     "dev": "pnpm build && serve dist --listen 5173",
     "preview": "serve dist --listen 4173",
     "lint": "eslint .",

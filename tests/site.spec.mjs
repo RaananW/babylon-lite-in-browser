@@ -5,11 +5,12 @@ test("the gallery exposes every example", async ({ page }) => {
 
   await expect(page).toHaveTitle(/Babylon Lite/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Babylon Lite");
-  await expect(page.locator(".example-card")).toHaveCount(3);
+  await expect(page.locator(".example-card")).toHaveCount(6);
+  await expect(page.locator(".example-card").first()).toHaveCSS("background-image", /basic\.png/);
   await expect(page.locator("#package-version")).toContainText("@babylonjs/lite@");
 });
 
-for (const example of ["basic", "animation"]) {
+for (const example of ["basic", "animation", "materials", "procedural-geometry", "csg"]) {
   test(`${example} renders with native browser modules`, async ({ page }) => {
     await page.goto(`/examples/${example}/`);
 
@@ -24,7 +25,7 @@ for (const example of ["basic", "animation"]) {
   });
 }
 
-for (const example of ["basic", "animation", "model-loading"]) {
+for (const example of ["basic", "animation", "model-loading", "materials", "procedural-geometry", "csg"]) {
   test(`${example} displays its deployed source`, async ({ page }) => {
     await page.goto(`/examples/${example}/`, { waitUntil: "domcontentloaded" });
     await page.getByRole("button", { name: "View source" }).click();
@@ -63,6 +64,15 @@ test("the self-hosted glTF asset is deployable", async ({ request }) => {
   expect(model.asset.version).toBe("2.0");
   expect(model.meshes).toHaveLength(1);
   expect(model.buffers[0].uri).toMatch(/^data:application\/octet-stream;base64,/);
+});
+
+test("every scene preview is deployable", async ({ request }) => {
+  for (const example of ["basic", "model-loading", "animation", "materials", "procedural-geometry", "csg"]) {
+    const response = await request.get(`/assets/previews/${example}.png`);
+    expect(response.ok()).toBe(true);
+    expect(response.headers()["content-type"]).toContain("image/png");
+    expect((await response.body()).byteLength).toBeGreaterThan(10_000);
+  }
 });
 
 test("the vendored module is served as JavaScript", async ({ request }) => {

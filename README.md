@@ -40,15 +40,25 @@ Everything needed for deployment is in `dist/`.
 
 ## Examples
 
-| Example                                         | What it demonstrates                                                |
-| ----------------------------------------------- | ------------------------------------------------------------------- |
-| [Basic scene](public/examples/basic/)           | Engine, scene, camera, light, PBR material, geometry, and lifecycle |
-| [Model loading](public/examples/model-loading/) | glTF loading, self-hosted assets, and automatic camera framing      |
-| [Animation](public/examples/animation/)         | Procedural updates through `onBeforeRender` and shared materials    |
+| Example                                                     | What it demonstrates                                                |
+| ----------------------------------------------------------- | ------------------------------------------------------------------- |
+| [Basic scene](public/examples/basic/)                       | Engine, scene, camera, light, PBR material, geometry, and lifecycle |
+| [Model loading](public/examples/model-loading/)             | glTF loading, self-hosted assets, and automatic camera framing      |
+| [Animation](public/examples/animation/)                     | Procedural updates through `onBeforeRender` and shared materials    |
+| [Advanced materials](public/examples/materials/)            | Clear coat, sheen, iridescence, and animated PBR geometry           |
+| [Procedural geometry](public/examples/procedural-geometry/) | Generated tubes, colored line systems, and live GPU buffer updates  |
+| [Boolean mesh sculpting](public/examples/csg/)              | Constructive solid geometry with subtract and union operations      |
 
 Every example is plain HTML and JavaScript. View its `index.html` and `main.js` together; there is
 no generated application source to decipher. Each running demo also has a **View source** button
 that displays its deployed import map and exact `main.js` module in the browser.
+
+The gallery cards use screenshots captured from the actual scenes. After changing a scene, refresh
+all previews with:
+
+```sh
+pnpm capture:previews
+```
 
 ## How direct browser imports work
 
