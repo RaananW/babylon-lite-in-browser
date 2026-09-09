@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Load from an npm CDN | Babylon Lite in the browser</title>
+    <link rel="stylesheet" href="../../shared/example.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@babylonjs/lite": "https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.27.0/dist/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../../shared/source-viewer.js"></script>
+  </head>
+  <body>
+    <div class="example-bar">
+      <a href="../../">← Examples</a>
+      <strong class="example-title">Load from an npm CDN</strong>
+      <span id="status" role="status">Initializing...</span>
+    </div>
+    <canvas id="renderCanvas" aria-label="Interactive Babylon Lite scene loaded from jsDelivr"></canvas>
+    <p class="hint">The Babylon Lite browser distribution comes directly from jsDelivr</p>
+  </body>
+</html>

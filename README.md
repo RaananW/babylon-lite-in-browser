@@ -7,8 +7,8 @@ Use [Babylon Lite](https://github.com/BabylonJS/Babylon-Lite) directly from a br
 
 This repository is the Babylon Lite counterpart to
 [babylonjs-esm-in-browser](https://github.com/RaananW/babylonjs-esm-in-browser). It uses the
-official browser distribution included in `@babylonjs/lite`, a browser import map, and a small
-static build step that copies files without transforming your application code.
+official browser distribution included in `@babylonjs/lite`, browser import maps, and either an npm
+CDN or a small static build step that copies files without transforming your application code.
 
 > Babylon Lite is WebGPU-only. Use a current Chrome, Edge, Firefox, or Safari release and serve the
 > project from `localhost` or HTTPS.
@@ -40,14 +40,15 @@ Everything needed for deployment is in `dist/`.
 
 ## Examples
 
-| Example                                                     | What it demonstrates                                                |
-| ----------------------------------------------------------- | ------------------------------------------------------------------- |
-| [Basic scene](public/examples/basic/)                       | Engine, scene, camera, light, PBR material, geometry, and lifecycle |
-| [Model loading](public/examples/model-loading/)             | glTF loading, self-hosted assets, and automatic camera framing      |
-| [Animation](public/examples/animation/)                     | Procedural updates through `onBeforeRender` and shared materials    |
-| [Advanced materials](public/examples/materials/)            | Clear coat, sheen, iridescence, and animated PBR geometry           |
-| [Procedural geometry](public/examples/procedural-geometry/) | Generated tubes, colored line systems, and live GPU buffer updates  |
-| [Boolean mesh sculpting](public/examples/csg/)              | Constructive solid geometry with subtract and union operations      |
+| Example                                                     | What it demonstrates                                                 |
+| ----------------------------------------------------------- | -------------------------------------------------------------------- |
+| [Basic scene](public/examples/basic/)                       | Engine, scene, camera, light, PBR material, geometry, and lifecycle  |
+| [Model loading](public/examples/model-loading/)             | glTF loading, self-hosted assets, and automatic camera framing       |
+| [Animation](public/examples/animation/)                     | Procedural updates through `onBeforeRender` and shared materials     |
+| [Advanced materials](public/examples/materials/)            | Clear coat, sheen, iridescence, and animated PBR geometry            |
+| [Procedural geometry](public/examples/procedural-geometry/) | Generated tubes, colored line systems, and live GPU buffer updates   |
+| [Boolean mesh sculpting](public/examples/csg/)              | Constructive solid geometry with subtract and union operations       |
+| [npm CDN](public/examples/cdn/)                             | A complete scene loaded directly from jsDelivr with no local package |
 
 Every example is plain HTML and JavaScript. View its `index.html` and `main.js` together; there is
 no generated application source to decipher. Each running demo also has a **View source** button
@@ -107,9 +108,10 @@ await startEngine(engine);
 self-contained browser distribution, also identified by its npm package metadata as the jsDelivr
 and unpkg entry point.
 
-### Use the CDN instead
+### Use an npm CDN instead
 
-For a small prototype, map the package directly to the pinned CDN artifact and skip the local copy:
+For a small prototype or a static page, map the package directly to a pinned npm CDN artifact. No
+package installation or copy step is required:
 
 ```html
 <script type="importmap">
@@ -119,10 +121,56 @@ For a small prototype, map the package directly to the pinned CDN artifact and s
     }
   }
 </script>
+<script type="module" src="./main.js"></script>
 ```
 
-Pin an exact version in deployed applications. A local copy is preferable when you need repeatable
-deployments, offline development, control over caching, or a strict Content Security Policy.
+Then import Babylon Lite normally from `main.js`:
+
+```js
+import {
+  addToScene,
+  attachControl,
+  createArcRotateCamera,
+  createEngine,
+  createHemisphericLight,
+  createPbrMaterial,
+  createSceneContext,
+  createSphere,
+  registerScene,
+  startEngine,
+} from "@babylonjs/lite";
+
+const canvas = document.querySelector("canvas");
+const engine = await createEngine(canvas);
+const scene = createSceneContext(engine);
+
+scene.camera = createArcRotateCamera(-Math.PI / 2, 1.1, 5, { x: 0, y: 0, z: 0 });
+attachControl(scene.camera, canvas, scene);
+addToScene(scene, createHemisphericLight([0, 1, 0], 1));
+
+const sphere = createSphere(engine, { diameter: 2 });
+sphere.material = createPbrMaterial({ baseColorFactor: [0.36, 0.23, 0.95, 1] });
+addToScene(scene, sphere);
+
+await registerScene(scene);
+await startEngine(engine);
+```
+
+The [npm CDN example](public/examples/cdn/) is a complete working version, including camera,
+lighting, materials, geometry, and animation.
+
+Babylon Lite's npm metadata identifies its official `dist/index.js` browser distribution as the
+entry point for both of these npm CDNs:
+
+| Provider                          | Pinned browser distribution URL                                     |
+| --------------------------------- | ------------------------------------------------------------------- |
+| [jsDelivr](https://jsdelivr.com/) | `https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.27.0/dist/index.js` |
+| [UNPKG](https://unpkg.com/)       | `https://unpkg.com/@babylonjs/lite@1.27.0/dist/index.js`            |
+
+jsDelivr is used in the live example, but switching providers only requires changing the import-map
+URL. Always pin an exact version in deployed applications; a floating version can change without
+your site changing. A local copy is preferable when you need offline development, control over
+caching and availability, or a strict Content Security Policy.
 
 ## The Babylon Lite lifecycle
 

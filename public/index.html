@@ -105,6 +105,14 @@
               <a href="./examples/csg/">Open example <span aria-hidden="true">→</span></a>
             </div>
           </article>
+          <article class="example-card" style="--card-image: url(&quot;./assets/previews/cdn.png&quot;)">
+            <div class="card-number">07</div>
+            <div class="card-copy">
+              <h3>Load from an npm CDN</h3>
+              <p>Run Babylon Lite from jsDelivr with only an import map and native browser modules.</p>
+              <a href="./examples/cdn/">Open example <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -114,8 +122,10 @@
           <h2 id="how-heading">Native ESM from npm to browser</h2>
         </div>
         <ol>
-          <li><strong>Install</strong> the pinned <code>@babylonjs/lite</code> npm dependency.</li>
-          <li><strong>Build</strong> by copying its official browser bundle into the static site.</li>
+          <li>
+            <strong>Choose</strong> a pinned npm CDN URL or install <code>@babylonjs/lite</code> locally.
+          </li>
+          <li><strong>Serve</strong> the official browser bundle from the CDN or your own static site.</li>
           <li><strong>Map</strong> the package name to that file with a browser import map.</li>
           <li><strong>Import</strong> named Lite APIs from ordinary module scripts.</li>
         </ol>

@@ -6,7 +6,7 @@ import { chromium } from "@playwright/test";
 const port = 4174;
 const distDirectory = resolve("dist");
 const previewDirectory = resolve("public/assets/previews");
-const examples = ["basic", "model-loading", "animation", "materials", "procedural-geometry", "csg"];
+const examples = ["basic", "model-loading", "animation", "materials", "procedural-geometry", "csg", "cdn"];
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
   ".gltf": "model/gltf+json",
