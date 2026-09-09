@@ -47,7 +47,8 @@ Everything needed for deployment is in `dist/`.
 | [Animation](public/examples/animation/)         | Procedural updates through `onBeforeRender` and shared materials    |
 
 Every example is plain HTML and JavaScript. View its `index.html` and `main.js` together; there is
-no generated application source to decipher.
+no generated application source to decipher. Each running demo also has a **View source** button
+that displays its deployed import map and exact `main.js` module in the browser.
 
 ## How direct browser imports work
 

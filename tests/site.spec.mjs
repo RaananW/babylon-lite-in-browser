@@ -24,6 +24,18 @@ for (const example of ["basic", "animation"]) {
   });
 }
 
+for (const example of ["basic", "animation", "model-loading"]) {
+  test(`${example} displays its deployed source`, async ({ page }) => {
+    await page.goto(`/examples/${example}/`, { waitUntil: "domcontentloaded" });
+    await page.getByRole("button", { name: "View source" }).click();
+
+    const sourceDialog = page.getByRole("dialog", { name: "No bundler involved" });
+    await expect(sourceDialog).toBeVisible();
+    await expect(sourceDialog).toContainText('"@babylonjs/lite"');
+    await expect(sourceDialog).toContainText('from "@babylonjs/lite"');
+  });
+}
+
 test("model-loading loads a self-hosted glTF with native browser modules", async ({ page }) => {
   test.skip(
     Boolean(process.env.CI),

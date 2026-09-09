@@ -65,11 +65,127 @@ body {
   white-space: nowrap;
 }
 
+.source-button,
+.source-close {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.source-button {
+  margin-left: auto;
+  padding: 0.45rem 0.7rem;
+}
+
+.source-button:hover,
+.source-close:hover {
+  border-color: #aab1ff;
+  background: rgba(170, 177, 255, 0.15);
+}
+
 #status {
   color: #f2bd74;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.76rem;
   white-space: nowrap;
+}
+
+.source-dialog {
+  width: min(62rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  border: 1px solid #343849;
+  border-radius: 0.8rem;
+  background: #0d101a;
+  color: #fff;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.65);
+}
+
+.source-dialog::backdrop {
+  background: rgba(2, 3, 7, 0.78);
+  backdrop-filter: blur(5px);
+}
+
+.source-dialog > header {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid #2c3040;
+  background: rgba(13, 16, 26, 0.95);
+  backdrop-filter: blur(12px);
+}
+
+.source-dialog h1,
+.source-dialog h2,
+.source-dialog p {
+  margin-top: 0;
+}
+
+.source-dialog h1 {
+  margin-bottom: 0;
+  font-size: 1.35rem;
+}
+
+.source-eyebrow {
+  margin-bottom: 0.3rem;
+  color: #9da6ff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.source-close {
+  padding: 0.55rem 0.8rem;
+}
+
+.source-explanation {
+  margin: 0;
+  padding: 1.25rem 1.4rem 0;
+  color: #b7bccb;
+  line-height: 1.55;
+}
+
+.source-section {
+  padding: 1.25rem 1.4rem 0;
+}
+
+.source-section:last-child {
+  padding-bottom: 1.4rem;
+}
+
+.source-section h2 {
+  margin-bottom: 0.65rem;
+  color: #d9dcff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.82rem;
+}
+
+.source-section pre {
+  overflow: auto;
+  max-height: 45vh;
+  margin: 0;
+  padding: 1rem;
+  border: 1px solid #292d3b;
+  border-radius: 0.55rem;
+  background: #070910;
+  color: #d6dae7;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.55;
+  tab-size: 2;
 }
 
 #status[data-state="ready"] {
@@ -93,4 +209,17 @@ body {
   font-size: 0.75rem;
   transform: translateX(-50%);
   white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .example-title {
+    display: none;
+  }
+
+  .source-dialog > header,
+  .source-explanation,
+  .source-section {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 }
