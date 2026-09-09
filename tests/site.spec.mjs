@@ -1,14 +1,23 @@
 import { expect, test } from "@playwright/test";
 
-const renderedExamples = ["basic", "animation", "materials", "procedural-geometry", "csg", "cdn"];
-const examples = ["basic", "animation", "model-loading", "materials", "procedural-geometry", "csg", "cdn"];
+const renderedExamples = [
+  "basic",
+  "animation",
+  "materials",
+  "procedural-geometry",
+  "csg",
+  "cdn",
+  "cdn-unpkg",
+  "cdn-jsdelivr",
+];
+const examples = ["basic", "animation", "model-loading", ...renderedExamples.slice(2)];
 
 test("the gallery exposes every example", async ({ page }) => {
   await page.goto("/");
 
   await expect(page).toHaveTitle(/Babylon Lite/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Babylon Lite");
-  await expect(page.locator(".example-card")).toHaveCount(7);
+  await expect(page.locator(".example-card")).toHaveCount(9);
   await expect(page.locator(".example-card").first()).toHaveCSS("background-image", /basic\.png/);
   await expect(page.locator("#package-version")).toContainText("@babylonjs/lite@");
 });
@@ -40,14 +49,18 @@ for (const example of examples) {
   });
 }
 
-test("the CDN example maps Babylon Lite to a pinned jsDelivr artifact", async ({ page }) => {
-  await page.goto("/examples/cdn/", { waitUntil: "domcontentloaded" });
-  await page.getByRole("button", { name: "View source" }).click();
+for (const [example, artifact] of [
+  ["cdn", "https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.28.0/dist/index.js"],
+  ["cdn-unpkg", "https://unpkg.com/@babylonjs/lite@1.28.0/dist/index.js"],
+  ["cdn-jsdelivr", "https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.28.0/dist/index.js"],
+]) {
+  test(`${example} maps Babylon Lite to its pinned CDN artifact`, async ({ page }) => {
+    await page.goto(`/examples/${example}/`, { waitUntil: "domcontentloaded" });
+    await page.getByRole("button", { name: "View source" }).click();
 
-  await expect(page.getByRole("dialog", { name: "No bundler involved" })).toContainText(
-    "https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.27.0/dist/index.js",
-  );
-});
+    await expect(page.getByRole("dialog", { name: "No bundler involved" })).toContainText(artifact);
+  });
+}
 
 test("model-loading loads a self-hosted glTF with native browser modules", async ({ page }) => {
   test.skip(

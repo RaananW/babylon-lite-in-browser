@@ -49,6 +49,8 @@ Everything needed for deployment is in `dist/`.
 | [Procedural geometry](public/examples/procedural-geometry/) | Generated tubes, colored line systems, and live GPU buffer updates   |
 | [Boolean mesh sculpting](public/examples/csg/)              | Constructive solid geometry with subtract and union operations       |
 | [npm CDN](public/examples/cdn/)                             | A complete scene loaded directly from jsDelivr with no local package |
+| [UNPKG crystal garden](public/examples/cdn-unpkg/)          | Reflective polyhedra and emissive materials loaded from UNPKG        |
+| [jsDelivr aurora orbit](public/examples/cdn-jsdelivr/)      | Colorful capsules and animated orbital geometry loaded from jsDelivr |
 
 Every example is plain HTML and JavaScript. View its `index.html` and `main.js` together; there is
 no generated application source to decipher. Each running demo also has a **View source** button
@@ -117,7 +119,7 @@ package installation or copy step is required:
 <script type="importmap">
   {
     "imports": {
-      "@babylonjs/lite": "https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.27.0/dist/index.js"
+      "@babylonjs/lite": "https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.28.0/dist/index.js"
     }
   }
 </script>
@@ -156,16 +158,20 @@ await registerScene(scene);
 await startEngine(engine);
 ```
 
-The [npm CDN example](public/examples/cdn/) is a complete working version, including camera,
-lighting, materials, geometry, and animation.
+The three CDN examples are complete working scenes with cameras, lighting, materials, geometry, and
+animation:
+
+- [npm CDN orbit](public/examples/cdn/) uses jsDelivr.
+- [Crystal garden](public/examples/cdn-unpkg/) uses UNPKG.
+- [Aurora orbit](public/examples/cdn-jsdelivr/) uses jsDelivr.
 
 Babylon Lite's npm metadata identifies its official `dist/index.js` browser distribution as the
 entry point for both of these npm CDNs:
 
 | Provider                          | Pinned browser distribution URL                                     |
 | --------------------------------- | ------------------------------------------------------------------- |
-| [jsDelivr](https://jsdelivr.com/) | `https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.27.0/dist/index.js` |
-| [UNPKG](https://unpkg.com/)       | `https://unpkg.com/@babylonjs/lite@1.27.0/dist/index.js`            |
+| [jsDelivr](https://jsdelivr.com/) | `https://cdn.jsdelivr.net/npm/@babylonjs/lite@1.28.0/dist/index.js` |
+| [UNPKG](https://unpkg.com/)       | `https://unpkg.com/@babylonjs/lite@1.28.0/dist/index.js`            |
 
 jsDelivr is used in the live example, but switching providers only requires changing the import-map
 URL. Always pin an exact version in deployed applications; a floating version can change without

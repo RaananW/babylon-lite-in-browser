@@ -22,7 +22,7 @@
     "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm build && pnpm test"
   },
   "dependencies": {
-    "@babylonjs/lite": "^1.27.0"
+    "@babylonjs/lite": "^1.28.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
