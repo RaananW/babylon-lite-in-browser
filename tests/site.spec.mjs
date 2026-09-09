@@ -11,6 +11,7 @@ const renderedExamples = [
   "cdn-jsdelivr",
 ];
 const examples = ["basic", "animation", "model-loading", ...renderedExamples.slice(2)];
+const siteUrl = "https://raananw.github.io/babylon-lite-in-browser";
 
 test("the gallery exposes every example", async ({ page }) => {
   await page.goto("/");
@@ -20,6 +21,56 @@ test("the gallery exposes every example", async ({ page }) => {
   await expect(page.locator(".example-card")).toHaveCount(9);
   await expect(page.locator(".example-card").first()).toHaveCSS("background-image", /basic\.png/);
   await expect(page.locator("#package-version")).toContainText("@babylonjs/lite@");
+});
+
+test("the gallery publishes search and social metadata", async ({ page }) => {
+  await page.goto("/");
+
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+    "content",
+    /3D scenes.*Babylon Lite/i,
+  );
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${siteUrl}/`);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Babylon Lite.*3D/i);
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /^https:\/\//);
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute("content", "summary_large_image");
+  expect(await page.locator('script[type="application/ld+json"]').textContent()).toContain(
+    "SoftwareSourceCode",
+  );
+});
+
+test("every example is independently indexable", async ({ page }) => {
+  for (const example of examples) {
+    await page.goto(`/examples/${example}/`, { waitUntil: "domcontentloaded" });
+
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /Babylon Lite/i);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `${siteUrl}/examples/${example}/`,
+    );
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+      "content",
+      `${siteUrl}/assets/previews/${example}.png`,
+    );
+    await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
+  }
+});
+
+test("crawler discovery files expose every public page", async ({ request }) => {
+  const robotsResponse = await request.get("/robots.txt");
+  const sitemapResponse = await request.get("/sitemap.xml");
+  const robots = await robotsResponse.text();
+  const sitemap = await sitemapResponse.text();
+
+  expect(robotsResponse.ok()).toBe(true);
+  expect(robots).toContain(`Sitemap: ${siteUrl}/sitemap.xml`);
+  expect(sitemapResponse.ok()).toBe(true);
+  expect(sitemapResponse.headers()["content-type"]).toContain("xml");
+  expect(sitemap).toContain(`<loc>${siteUrl}/</loc>`);
+
+  for (const example of examples) {
+    expect(sitemap).toContain(`<loc>${siteUrl}/examples/${example}/</loc>`);
+  }
 });
 
 for (const example of renderedExamples) {

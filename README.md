@@ -2,8 +2,9 @@
 
 [**View the live examples on GitHub Pages**](https://raananw.github.io/babylon-lite-in-browser/)
 
-Use [Babylon Lite](https://github.com/BabylonJS/Babylon-Lite) directly from a browser
-`<script type="module">`, with no application bundler and no framework.
+Build interactive 3D scenes with [Babylon Lite](https://github.com/BabylonJS/Babylon-Lite), the
+lightweight WebGPU renderer in the Babylon.js ecosystem, directly in the browser with plain HTML,
+JavaScript, and `<script type="module">`—no application bundler or framework required.
 
 This repository is the Babylon Lite counterpart to
 [babylonjs-esm-in-browser](https://github.com/RaananW/babylonjs-esm-in-browser). It uses the
