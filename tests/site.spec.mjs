@@ -69,9 +69,14 @@ test("the self-hosted glTF asset is deployable", async ({ request }) => {
 test("every scene preview is deployable", async ({ request }) => {
   for (const example of ["basic", "model-loading", "animation", "materials", "procedural-geometry", "csg"]) {
     const response = await request.get(`/assets/previews/${example}.png`);
+    const image = await response.body();
+
     expect(response.ok()).toBe(true);
     expect(response.headers()["content-type"]).toContain("image/png");
-    expect((await response.body()).byteLength).toBeGreaterThan(10_000);
+    expect(image.byteLength).toBeGreaterThan(1_000);
+    expect(image.subarray(1, 4).toString()).toBe("PNG");
+    expect(image.readUInt32BE(16)).toBe(960);
+    expect(image.readUInt32BE(20)).toBe(640);
   }
 });
 

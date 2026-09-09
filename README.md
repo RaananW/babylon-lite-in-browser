@@ -60,6 +60,10 @@ all previews with:
 pnpm capture:previews
 ```
 
+The capture command opens a headed Chromium window so WebGPU is hardware-accelerated. Babylon Lite
+reads each rendered frame back from the GPU, and the script rejects unexpectedly dark captures
+before replacing the committed preview images.
+
 ## How direct browser imports work
 
 Node understands a bare package name such as `@babylonjs/lite`, but browsers need a URL. Each
