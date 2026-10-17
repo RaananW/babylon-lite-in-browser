@@ -1,0 +1,79 @@
+{
+  "asset": {
+    "version": "2.0",
+    "generator": "babylon-lite-in-browser"
+  },
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [0]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Pyramid"
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Pyramid",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1
+          },
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "Purple metal",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [0.42, 0.2, 0.95, 1],
+        "metallicFactor": 0.35,
+        "roughnessFactor": 0.3
+      }
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 18,
+      "type": "VEC3",
+      "min": [-1, 0, -1],
+      "max": [1, 2, 1]
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 18,
+      "type": "VEC3"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 216,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 216,
+      "byteLength": 216,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 432,
+      "uri": "data:application/octet-stream;base64,AACAvwAAAAAAAIC/AACAPwAAAAAAAIA/AACAPwAAAAAAAIC/AACAvwAAAAAAAIC/AACAvwAAAAAAAIA/AACAPwAAAAAAAIA/AACAvwAAAAAAAIC/AACAPwAAAAAAAIC/AAAAAAAAAEAAAAAAAACAPwAAAAAAAIC/AACAPwAAAAAAAIA/AAAAAAAAAEAAAAAAAACAPwAAAAAAAIA/AACAvwAAAAAAAIA/AAAAAAAAAEAAAAAAAACAvwAAAAAAAIA/AACAvwAAAAAAAIC/AAAAAAAAAEAAAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAAAAgL8AAAAAAAAAAC/d5D4v3WS/AAAAAC/d5D4v3WS/AAAAAC/d5D4v3WS/L91kPy/d5D4AAAAAL91kPy/d5D4AAAAAL91kPy/d5D4AAAAAAAAAAC/d5D4v3WQ/AAAAAC/d5D4v3WQ/AAAAAC/d5D4v3WQ/L91kvy/d5D4AAAAAL91kvy/d5D4AAAAAL91kvy/d5D4AAAAA"
+    }
+  ]
+}

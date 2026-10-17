@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Create a constructive solid geometry 3D sculpture in the browser with Babylon Lite, WebGPU, mesh subtraction, and mesh unions."
+    />
+    <link rel="canonical" href="https://raananw.github.io/babylon-lite-in-browser/examples/csg/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Babylon Lite in the browser" />
+    <meta property="og:title" content="Babylon Lite constructive solid geometry" />
+    <meta
+      property="og:description"
+      content="Subtract and union primitives into a new Babylon.js Lite WebGPU mesh directly in the browser."
+    />
+    <meta property="og:url" content="https://raananw.github.io/babylon-lite-in-browser/examples/csg/" />
+    <meta
+      property="og:image"
+      content="https://raananw.github.io/babylon-lite-in-browser/assets/previews/csg.png"
+    />
+    <meta property="og:image:alt" content="Constructive solid geometry rendered with Babylon Lite" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Babylon Lite constructive solid geometry in the browser</title>
+    <link rel="stylesheet" href="../../shared/example.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@babylonjs/lite": "../../vendor/@babylonjs/lite/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../../shared/source-viewer.js"></script>
+  </head>
+  <body>
+    <div class="example-bar">
+      <a href="../../">← Examples</a>
+      <h1 class="example-title">Constructive solid geometry</h1>
+      <span id="status" role="status">Sculpting mesh...</span>
+    </div>
+    <canvas id="renderCanvas" aria-label="Babylon Lite constructive solid geometry sculpture"></canvas>
+    <p class="hint">Subtract · Union · Generate a new renderable mesh</p>
+  </body>
+</html>

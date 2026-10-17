@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Generate and animate procedural 3D geometry in the browser with Babylon Lite, WebGPU, native ES modules, and no JavaScript bundler."
+    />
+    <link
+      rel="canonical"
+      href="https://raananw.github.io/babylon-lite-in-browser/examples/procedural-geometry/"
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Babylon Lite in the browser" />
+    <meta property="og:title" content="Babylon Lite procedural 3D geometry" />
+    <meta
+      property="og:description"
+      content="Build a dynamic double helix with generated tubes and GPU line buffers using Babylon.js Lite."
+    />
+    <meta
+      property="og:url"
+      content="https://raananw.github.io/babylon-lite-in-browser/examples/procedural-geometry/"
+    />
+    <meta
+      property="og:image"
+      content="https://raananw.github.io/babylon-lite-in-browser/assets/previews/procedural-geometry.png"
+    />
+    <meta property="og:image:alt" content="Procedural 3D geometry rendered with Babylon Lite" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Babylon Lite procedural 3D geometry in the browser</title>
+    <link rel="stylesheet" href="../../shared/example.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@babylonjs/lite": "../../vendor/@babylonjs/lite/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../../shared/source-viewer.js"></script>
+  </head>
+  <body>
+    <div class="example-bar">
+      <a href="../../">← Examples</a>
+      <h1 class="example-title">Procedural geometry</h1>
+      <span id="status" role="status">Generating curves...</span>
+    </div>
+    <canvas id="renderCanvas" aria-label="Animated procedural double helix"></canvas>
+    <p class="hint">Spline sampling · Generated tubes · Dynamic line buffers</p>
+  </body>
+</html>
