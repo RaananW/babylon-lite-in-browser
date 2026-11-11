@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Run a colorful Babylon Lite crystal garden 3D scene directly from UNPKG with WebGPU, an import map, native ES modules, and no bundler."
+    />
+    <link rel="canonical" href="https://raananw.github.io/babylon-lite-in-browser/examples/cdn-unpkg/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Babylon Lite in the browser" />
+    <meta property="og:title" content="Babylon Lite crystal garden from UNPKG" />
+    <meta
+      property="og:description"
+      content="Reflective crystals and emissive Babylon.js Lite materials loaded directly from an npm CDN."
+    />
+    <meta property="og:url" content="https://raananw.github.io/babylon-lite-in-browser/examples/cdn-unpkg/" />
+    <meta
+      property="og:image"
+      content="https://raananw.github.io/babylon-lite-in-browser/assets/previews/cdn-unpkg.png"
+    />
+    <meta property="og:image:alt" content="Colorful Babylon Lite crystal garden" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Babylon Lite crystal garden from UNPKG</title>
+    <link rel="stylesheet" href="../../shared/example.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@babylonjs/lite": "https://unpkg.com/@babylonjs/lite@1.28.0/dist/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../../shared/source-viewer.js"></script>
+  </head>
+  <body>
+    <div class="example-bar">
+      <a href="../../">← Examples</a>
+      <h1 class="example-title">UNPKG crystal garden</h1>
+      <span id="status" role="status">Initializing...</span>
+    </div>
+    <canvas id="renderCanvas" aria-label="Colorful crystal garden loaded from UNPKG"></canvas>
+    <p class="hint">Babylon Lite is loaded directly from UNPKG</p>
+  </body>
+</html>

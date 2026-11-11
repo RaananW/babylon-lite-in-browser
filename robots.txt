@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raananw.github.io/babylon-lite-in-browser/sitemap.xml

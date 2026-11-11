@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/basic/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/model-loading/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/animation/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/materials/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/procedural-geometry/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/csg/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/cdn/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/cdn-unpkg/</loc>
+  </url>
+  <url>
+    <loc>https://raananw.github.io/babylon-lite-in-browser/examples/cdn-jsdelivr/</loc>
+  </url>
+</urlset>

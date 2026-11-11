@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Load and display a glTF 3D model directly in the browser with Babylon Lite, WebGPU, native JavaScript modules, and no bundler."
+    />
+    <link rel="canonical" href="https://raananw.github.io/babylon-lite-in-browser/examples/model-loading/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Babylon Lite in the browser" />
+    <meta property="og:title" content="Load a glTF model with Babylon Lite" />
+    <meta
+      property="og:description"
+      content="A self-hosted glTF model rendered as an interactive Babylon.js Lite WebGPU scene with no bundler."
+    />
+    <meta
+      property="og:url"
+      content="https://raananw.github.io/babylon-lite-in-browser/examples/model-loading/"
+    />
+    <meta
+      property="og:image"
+      content="https://raananw.github.io/babylon-lite-in-browser/assets/previews/model-loading.png"
+    />
+    <meta property="og:image:alt" content="A glTF model rendered with Babylon Lite" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Load a glTF 3D model with Babylon Lite</title>
+    <link rel="stylesheet" href="../../shared/example.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "@babylonjs/lite": "../../vendor/@babylonjs/lite/index.js"
+        }
+      }
+    </script>
+    <script type="module" src="./main.js"></script>
+    <script type="module" src="../../shared/source-viewer.js"></script>
+  </head>
+  <body>
+    <div class="example-bar">
+      <a href="../../">← Examples</a>
+      <h1 class="example-title">Load a glTF model</h1>
+      <span id="status" role="status">Loading model...</span>
+    </div>
+    <canvas id="renderCanvas" aria-label="Interactive Babylon Lite glTF model"></canvas>
+    <p class="hint">Self-hosted glTF · Automatic camera framing · Drag to orbit</p>
+  </body>
+</html>
